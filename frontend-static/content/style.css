@@ -1,0 +1,49 @@
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14pt;
+    margin: 0em auto;
+    background: #323A4E;
+    padding: 0;
+    width: 90%;
+    text-align: justify;
+}
+
+h1 {
+    color: #fff;
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 3px 3px 5px #ccc;
+    margin: .5em 0 .2em 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#shopping-basket {
+    position: fixed;
+    top: 10px;
+    right: 100px;
+    font-size: 9pt;
+    cursor: pointer;
+    color: #e0e0e0;
+    border: 1px dotted #fff;
+    padding: 10px;
+}
+
+.item {
+    padding: 10px;
+    color: #9351e5;
+    font-size: 2em;
+    text-align: center;
+}
+
+.buy {
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #9351e5;
+}
+

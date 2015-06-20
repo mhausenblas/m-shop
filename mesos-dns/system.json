@@ -1,0 +1,55 @@
+{
+  "id" : "/",
+  "groups": [
+    {
+      "id" : "system",
+      "apps":[
+        {
+            "id": "mesos-dns",
+            "instances": 1,
+            "cpus": 0.2,
+            "mem": 50,
+            "cmd": "/mesos-dns -config=/config.json",
+            "container": {
+              "type": "DOCKER",
+              "docker": {
+                  "image": "mesosphere/mesos-dns:latest",
+                  "network": "HOST"
+              },
+              "volumes": [
+                      {
+                        "containerPath": "/config.json",
+                        "hostPath": "/etc/mesos-dns/config.js",
+                        "mode": "RO"
+                      }
+                ]  
+            }
+        },
+        {
+          "id": "sedi",
+          "instances": 1,
+          "cpus": 0.2,
+          "mem": 64,
+          "cmd": "python /tmp/mc/sedi.py",
+          "container": {
+            "type": "DOCKER",
+            "docker": {
+              "image": "python:2.7",
+              "network": "BRIDGE",
+              "portMappings": [
+                { "containerPort": 31313, "hostPort": 31313 }
+              ]
+            },
+            "volumes": [
+                  {
+                    "containerPath": "/tmp/mc",
+                    "hostPath": "/home/vagrant/mc/",
+                    "mode": "RO"
+                  }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

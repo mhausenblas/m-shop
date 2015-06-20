@@ -1,19 +1,11 @@
 {
-  "id": "sedi",
-  "cmd": "python3 mc-master/sedi.py",
-  "cpus": 0.1,
-  "mem": 50.0,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "python:3",
-      "network": "BRIDGE",
-      "portMappings": [
-        { "containerPort": 313131, "hostPort": 313131 }
-      ]
-    }
-  },
-  "uris": [
-      "https://github.com/mhausenblas/mc/archive/master.zip"
-  ]
+    "id": "sedi", 
+    "cmd": "mc-master/sedi.py",
+    "cpus": 0.1,
+    "mem": 20.0,
+    "instances": 1,
+    "ports": [ 31313 ],
+    "uris": [
+        "https://github.com/mhausenblas/mc/archive/master.zip"
+    ]
 }

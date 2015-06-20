@@ -16,7 +16,7 @@ Run SeDi under Marathon
 
 ## Demo
 
-    http POST http://10.141.141.10:8080/v2/apps < mesos-dns/mesos-dns.json
+    http PUT http://10.141.141.10:8080/v2/groups < mesos-dns/system.json
     http POST http://10.141.141.10:8080/v2/groups < m-shop.json
     dig webdis-site-m-shop.marathon.mesos
     dig _webdis-site-m-shop._tcp.marathon.mesos SRV

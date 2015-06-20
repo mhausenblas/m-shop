@@ -65,11 +65,11 @@
               ]
             },
             "volumes": [
-                  {
-                    "containerPath": "/var/log/access",
-                    "hostPath": "/tmp/m-shop/nginx",
-                    "mode": "RO"
-                  }
+              {
+                "containerPath": "/var/log/access",
+                "hostPath": "/tmp/m-shop/nginx",
+                "mode": "RO"
+              }
             ]
           }
         }

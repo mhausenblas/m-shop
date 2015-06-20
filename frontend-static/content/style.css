@@ -28,7 +28,8 @@ img {
     cursor: pointer;
     color: #e0e0e0;
     border: 1px dotted #fff;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
+    width: 200px;
 }
 
 .item {

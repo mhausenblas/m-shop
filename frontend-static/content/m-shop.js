@@ -9,13 +9,7 @@ $(document).ready(function() {
     
     $(".buy").click(function(event) {
         buyItem($(this).parent().attr('id'));
-        listShoppingBasket();
     });
-    
-    $("#shopping-basket").click(function(event) {
-        listShoppingBasket();
-    });
-    
 });
 
 function serviceDiscovery() {
@@ -23,7 +17,6 @@ function serviceDiscovery() {
     console.info('Discovering endpoint for ' + SHOPPING_BASKET_SERVICE);
     $.get(apicall, function(d) {
         console.debug("GET " + apicall);
-        console.debug(d);
         BASE_URL = d
         console.info('Got BASE_URL ' + BASE_URL);
         initSession();
@@ -33,40 +26,31 @@ function serviceDiscovery() {
 function buyItem(itemID) {
     var apicallGET = BASE_URL + '/GET/' + SESSION_ID;
     var apicallSET = BASE_URL + '/SET/' + SESSION_ID + '/';
-    $.get(apicallGET, function(d) {
-        console.debug("GET " + apicallGET);
-        console.debug(d);
-        if(d['GET'] == 'EMPTY'){
-            apicallSET += itemID;
-        }
-        else {
-            apicallSET += d['GET'] + ':' + itemID;
-        }
-        $.get(apicallSET, function(s) {
-            console.debug("GET " + apicallSET);
-            console.debug(s);
-        });
-    });
-}
-
-function listShoppingBasket(){
-    var apicallGET = BASE_URL + '/GET/' + SESSION_ID;
     var shoppingBasket = '';
     
     $.get(apicallGET, function(d) {
         console.debug("GET " + apicallGET);
-        console.debug(d);
         if(d['GET'] == 'EMPTY'){
-            $('#shopping-basket').html('<p>Empty shopping basket!</p>');
+            apicallSET += itemID;
+             $('#shopping-basket-content').html('<p>' + $('#'+ itemID + ' a').attr('title') + '</p>');
         }
         else {
             shoppingBasket = d['GET'].split(':');
-            $('#shopping-basket').html('<p>Your shopping basket:</p>');
+            if (shoppingBasket.indexOf(itemID) >= 0) { // item already in basket
+                apicallSET += d['GET'];
+            }
+            else {
+                apicallSET += d['GET'] + ':' + itemID;
+                shoppingBasket.push(itemID);
+            }
+            $('#shopping-basket-content').html('');
             for (item in shoppingBasket ) {
-                $('#shopping-basket').append('<p>' + shoppingBasket[item] + '</p>');
+                $('#shopping-basket-content').append('<p>' + $('#'+ shoppingBasket[item] + ' a').attr('title') + '</p>');
             }
         }
-       
+        $.get(apicallSET, function(s) { // update basket
+            console.debug("GET " + apicallSET);
+        });
     });
 }
 
@@ -74,7 +58,6 @@ function initSession() {
     var apicallSET = BASE_URL + '/SET/' + SESSION_ID + '/EMPTY';
     $.get(apicallSET, function(s) {
         console.debug("GET " + apicallSET);
-        console.debug(s);
     });
 }
 

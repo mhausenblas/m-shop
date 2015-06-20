@@ -23,8 +23,10 @@ Redeployment:
 
 Analytics:
 
+* Wait some 2min in the beginning for the ELK stack to be set up
 * perform a couple of interactions on `/m-shop/site/nginx` app (items, shop)
 * in the Vagrant box, check logs `ls -al /tmp/m-shop/nginx`
+* Index: `logstash-` and field name is `@timestamp`
 * For Kibana some fields: `request`, `response`, `verb referrer` 
 
 ### Mesos-DNS
@@ -44,18 +46,9 @@ In the Vagrant box:
     docker rmi mhausenblas/m-shop-nginx
     docker build -t mhausenblas/m-shop-nginx .
     docker push mhausenblas/m-shop-nginx
-    
-    
-    
 
 ### ELK stack for analytics
 
 Based on http://raulcd.com/elasticsearch-logstash-and-kibana-on-docker.html
 
 See https://registry.hub.docker.com/u/raulcd/elk-docker/
-
-Note:
-
-* Wait some 2min in the beginning for the ELK stack to be set up
-* Produce at least > 10kB logs in vagrant@mesos:/tmp/m-shop/nginx
-* Index: `logstash-` and field name is `@timestamp`

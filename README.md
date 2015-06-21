@@ -40,6 +40,26 @@ In the Vagrant box:
     dig webdis-site-m-shop.marathon.mesos
     dig _webdis-site-m-shop._tcp.marathon.mesos SRV
 
+    ; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> _webdis-site-m-shop._tcp.marathon.mesos SRV
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62784
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; QUESTION SECTION:
+    ;_webdis-site-m-shop._tcp.marathon.mesos. IN SRV
+
+    ;; ANSWER SECTION:
+    _webdis-site-m-shop._tcp.marathon.mesos. 60 IN SRV 0 0 31000 webdis-site-m-shop-46886-s0.marathon.mesos.
+
+    ;; ADDITIONAL SECTION:
+    webdis-site-m-shop-46886-s0.marathon.mesos. 60 IN A 10.141.141.10
+
+    ;; Query time: 3 msec
+    ;; SERVER: 127.0.0.1#53(127.0.0.1)
+    ;; WHEN: Sun Jun 21 10:47:21 UTC 2015
+    ;; MSG SIZE  rcvd: 216
+
 ### Build Website
 
     cd frontend-static/

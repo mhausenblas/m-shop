@@ -1,5 +1,6 @@
 {
   "zk": "zk://127.0.0.1:2181/mesos",
+  "masters": ["127.0.0.1:5050"],  
   "refreshSeconds": 60,
   "ttl": 60,
   "domain": "mesos",
